@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "F1 Fuel Flow Gate",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 150, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledVerde",    "top": 0,   "left": 50,  "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledVermelho", "top": 0,   "left": 120, "attrs": { "color": "red"   } },
+    { "type": "wokwi-led", "id": "ledAzul",     "top": 0,   "left": 190, "attrs": { "color": "blue"  } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 70, "left": 50,  "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 70, "left": 120, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 70, "left": 190, "attrs": { "value": "220" } },
+    { "type": "wokwi-pushbutton", "id": "btnA", "top": 150, "left": 320, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btnB", "top": 230, "left": 320, "attrs": { "color": "red"   } }
+  ],
+  "connections": [
+    [ "esp:D2", "r1:1", "green", [] ],
+    [ "r1:2",   "ledVerde:A",    "green", [] ],
+    [ "ledVerde:C",    "esp:GND.1", "black", [] ],
+
+    [ "esp:D4", "r2:1", "red", [] ],
+    [ "r2:2",   "ledVermelho:A", "red", [] ],
+    [ "ledVermelho:C", "esp:GND.1", "black", [] ],
+
+    [ "esp:D5", "r3:1", "blue", [] ],
+    [ "r3:2",   "ledAzul:A",    "blue", [] ],
+    [ "ledAzul:C",     "esp:GND.1", "black", [] ],
+
+    [ "esp:D18", "btnA:1.l", "green", [] ],
+    [ "btnA:2.l", "esp:GND.1", "black", [] ],
+
+    [ "esp:D19", "btnB:1.l", "red", [] ],
+    [ "btnB:2.l", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
