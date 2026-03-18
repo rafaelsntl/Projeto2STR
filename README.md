@@ -253,7 +253,23 @@ Todos os LEDs utilizam resistor de **220 Ω** em série. Os botões utilizam **p
 
 > O jitter de 10ms ultrapassa o timeout de 8ms do sensor — a fraude é detectada.
 
+---
 
+### Teste 4 — Desativar Falha
+
+**Ação:** Pressione o **Botão B** novamente.
+
+**Esperado:** LED Vermelho apaga, LED Verde acende, LED Azul volta a fixo.
+
+---
+
+### Teste 5 — Desativar Cheat
+
+**Ação:** Pressione o **Botão A**.
+
+**Esperado:** LED Azul apaga, LED Verde aceso, sistema no Modo Legal.
+
+---
 
 ## Estrutura de Arquivos
 
@@ -284,8 +300,8 @@ f1-fuel-flow-gate/
 
 ## Links Úteis
 
-Vídeo demonstrativo: https://www.youtube.com/watch?v=3G3iLeBrpnM
-Simulação: https://wokwi.com/projects/458792449518793729
+- Vídeo demonstrativo: https://www.youtube.com/watch?v=3G3iLeBrpnM
+- Simulação: https://wokwi.com/projects/458792449518793729
 
 ## Referências
 
