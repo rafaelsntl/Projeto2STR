@@ -301,7 +301,7 @@ f1-fuel-flow-gate/
 ## Links Úteis
 
 - Vídeo demonstrativo: https://www.youtube.com/watch?v=3G3iLeBrpnM
-- Simulação: https://wokwi.com/projects/458792449518793729
+- Simulação: https://wokwi.com/projects/458836566912249857
 
 ## Referências
 
