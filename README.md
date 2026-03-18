@@ -253,23 +253,7 @@ Todos os LEDs utilizam resistor de **220 Ω** em série. Os botões utilizam **p
 
 > O jitter de 10ms ultrapassa o timeout de 8ms do sensor — a fraude é detectada.
 
----
 
-### Teste 4 — Desativar Falha
-
-**Ação:** Pressione o **Botão B** novamente.
-
-**Esperado:** LED Vermelho apaga, LED Verde acende, LED Azul volta a fixo.
-
----
-
-### Teste 5 — Desativar Cheat
-
-**Ação:** Pressione o **Botão A**.
-
-**Esperado:** LED Azul apaga, LED Verde aceso, sistema no Modo Legal.
-
----
 
 ## Estrutura de Arquivos
 
@@ -298,29 +282,10 @@ f1-fuel-flow-gate/
 
 ---
 
-## Decisões de Projeto
+## Links Úteis
 
-### Por que Task Notifications em vez de semáforos?
-
-Task Notifications operam diretamente no TCB (Task Control Block) da tarefa destino, sem alocar nenhum objeto adicional no heap. São mais rápidas que semáforos binários e consomem zero memória extra. Para sinalização ponto a ponto entre duas tarefas com handles conhecidos, são sempre a escolha ideal.
-
-### Por que `vTaskDelayUntil` e não `vTaskDelay`?
-
-`vTaskDelay(30)` espera 30 ms após o fim do corpo da tarefa — se o corpo levar 2 ms, o período real fica 32 ms e esse erro acumula. `vTaskDelayUntil` desconta o tempo de execução e garante período exato. Para um sensor de fiscalização onde a frequência de amostragem é o parâmetro crítico, isso é indispensável.
-
-### Por que o handshake tem dois passos?
-
-Um único passo não garante ordenação: o sensor poderia ler antes de a escrita do injetor ser visível. O segundo passo garante que o sensor só avança para a leitura depois que o valor 100 está definitivamente em memória.
-
-### Por que o mutex ainda é necessário com o handshake?
-
-O handshake garante a **ordenação temporal**. O mutex garante a **atomicidade do acesso** — que leitura e escrita não ocorram literalmente ao mesmo tempo em núcleos diferentes do ESP32 dual-core.
-
-### Por que `vButtonTask` tem prioridade 2?
-
-O sensor (prioridade 3) precisa preemptar qualquer coisa durante o período crítico. O injetor (prioridade 1) deve ceder CPU sempre que outros acordam. A tarefa de botões, com prioridade 2, responde ao usuário sem interferir no par sensor-injetor.
-
----
+Vídeo demonstrativo: https://www.youtube.com/watch?v=3G3iLeBrpnM
+Simulação: https://wokwi.com/projects/458792449518793729
 
 ## Referências
 
